@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Messi World ⚽🐐</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#061a38,#075ca8,#69d5ff);
+color:white;
+min-height:100vh;
+}
+
+header{
+position:sticky;
+top:0;
+z-index:100;
+background:rgba(3,18,39,.96);
+padding:14px;
+text-align:center;
+box-shadow:0 3px 15px #0007;
+}
+
+header h1{
+margin:0 0 10px;
+font-size:30px;
+}
+
+nav{
+display:flex;
+gap:7px;
+overflow-x:auto;
+padding-bottom:3px;
+}
+
+nav button{
+border:0;
+border-radius:20px;
+padding:10px 15px;
+white-space:nowrap;
+background:#ffffff22;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+nav button:hover{
+background:#ffffff40;
+}
+
+section{
+max-width:900px;
+margin:auto;
+padding:25px 15px;
+}
+
+.hero{
+text-align:center;
+padding-top:45px;
+}
+
+.hero h2{
+font-size:44px;
+margin:10px 0;
+}
+
+.card{
+background:#ffffff1c;
+backdrop-filter:blur(10px);
+border:1px solid #ffffff30;
+border-radius:25px;
+padding:20px;
+margin:16px 0;
+box-shadow:0 8px 25px #0004;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+gap:12px;
+}
+
+.game{
+background:#ffffff18;
+border-radius:20px;
+padding:20px 10px;
+text-align:center;
+cursor:pointer;
+transition:.2s;
+font-size:17px;
+}
+
+.game:hover{
+transform:translateY(-4px);
+background:#ffffff30;
+}
+
+.main{
+background:#ffd84d;
+color:#061a38;
+border:0;
+border-radius:18px;
+padding:13px 20px;
+font-weight:bold;
+font-size:16px;
+cursor:pointer;
+margin:5px;
+}
+
+.answer{
+display:block;
+width:100%;
+margin:8px 0;
+padding:14px;
+border:0;
+border-radius:15px;
+background:white;
+color:#082344;
+font-weight:bold;
+font-size:16px;
+cursor:pointer;
+}
+
+.answer:hover{
+background:#dff5ff;
+}
+
+.score{
+position:fixed;
+left:10px;
+bottom:10px;
+z-index:200;
+background:#061a38;
+padding:10px 14px;
+border-radius:20px;
+font-weight:bold;
+box-shadow:0 4px 15px #0006;
+}
+
+#gameBox{
+min-height:170px;
+}
+
+#result{
+font-size:20px;
+font-weight:bold;
+margin-top:15px;
+text-align:center;
+}
+
+.video{
+position:relative;
+width:100%;
+padding-bottom:56.25%;
+margin-top:12px;
+border-radius:18px;
+overflow:hidden;
+}
+
+.video iframe{
+position:absolute;
+width:100%;
+height:100%;
+border:0;
+}
+
+footer{
+text-align:center;
+padding:40px 15px;
+opacity:.8;
+}
+
+.big{
+font-size:70px;
+text-align:center;
+}
+
+input{
+padding:13px;
+border:0;
+border-radius:14px;
+font-size:17px;
+max-width:100%;
+}
+
+.goal{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:7px;
+max-width:400px;
+margin:20px auto;
+}
+
+.goal button{
+height:70px;
+border:0;
+border-radius:15px;
+font-size:28px;
+cursor:pointer;
+background:#ffffffdd;
+}
+
+.memory{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:8px;
+max-width:400px;
+margin:auto;
+}
+
+.memory button{
+height:70px;
+font-size:28px;
+border:0;
+border-radius:15px;
+cursor:pointer;
+background:white;
+}
+
+.choice{
+font-size:20px;
+padding:15px;
+border-radius:15px;
+background:#ffffff20;
+margin:8px 0;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>🐐 Messi World ⚽</h1>
+
+<nav>
+<button onclick="show('home')">🏠 בית</button>
+<button onclick="show('about')">👤 מסי</button>
+<button onclick="show('career')">🏆 קריירה</button>
+<button onclick="show('videos')">🎥 סרטונים</button>
+<button onclick="show('games')">🎮 משחקים</button>
+</nav>
+
+</header>
+
+<div class="score">
+⭐ נקודות: <span id="score">0</span>
+&nbsp; | &nbsp;
+🏆 שיא: <span id="best">0</span>
+</div>
+
+
+<main>
+
+<!-- HOME -->
+
+<section id="home" class="hero">
+
+<div class="card">
+
+<div class="big">⚽🐐</div>
+
+<h2>Messi World</h2>
+
+<p>
+ברוכים הבאים לעולם של ליאו מסי! 💙
+</p>
+
+<p>
+מידע • סרטונים • משחקים • אתגרים ⚽
+</p>
+
+<button class="main" onclick="show('games')">
+🎮 להתחיל לשחק
+</button>
+
+<button class="main" onclick="soundTest()">
+🔊 סאונד
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>⭐ הניקוד שלך</h2>
+
+<div class="big" id="homeScore">0</div>
+
+<p>כמה נקודות תצליחי לצבור? 🏆</p>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about" style="display:none">
+
+<h2>👤 מי זה ליאו מסי?</h2>
+
+<div class="card">
+
+<h2>🇦🇷 ליאונל מסי</h2>
+
+<p>
+ליאונל מסי נולד ב־24 ביוני 1987 ברוסאריו, ארגנטינה.
+הוא שחקן התקפה שמאלי ואחד משחקני הכדורגל המפורסמים
+והמצליחים ביותר בעולם.
+</p>
+
+</div>
+
+<div class="grid">
+
+<div class="card">
+🇦🇷<br>
+<b>ארגנטינה</b>
+</div>
+
+<div class="card">
+📅<br>
+<b>24.6.1987</b>
+</div>
+
+<div class="card">
+🦶<br>
+<b>רגל שמאל</b>
+</div>
+
+<div class="card">
+🥇<br>
+<b>8 כדורי זהב</b>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CAREER -->
+
+<section id="career" style="display:none">
+
+<h2>🏆 הקריירה של מסי</h2>
+
+<div class="card">
+<h2>🔵🔴 ברצלונה</h2>
+<p>
+מסי שיחק בברצלונה במשך שנים רבות וזכה איתה
+בתארים רבים, כולל ליגת האלופות ואליפויות ספרד.
+</p>
+</div>
+
+<div class="card">
+<h2>🔵🔴 פריז סן־ז'רמן</h2>
+<p>
+מסי שיחק בפריז סן־ז'רמן בין 2021 ל־2023.
+</p>
+</div>
+
+<div class="card">
+<h2>🩷🖤 אינטר מיאמי</h2>
+<p>
+מסי הצטרף לאינטר מיאמי בשנת 2023 והמשיך את הקריירה
+שלו בארצות הברית.
+</p>
+</div>
+
+<div class="card">
+<h2>🇦🇷 ארגנטינה</h2>
+<p>
+עם נבחרת ארגנטינה מסי זכה בקופה אמריקה ובמונדיאל 2022.
+</p>
+</div>
+
+<div class="card">
+<h2>🥇 תארים בולטים</h2>
+<p>🏆 מונדיאל 2022</p>
+<p>🏆 קופה אמריקה</p>
+<p>🏆 ליגת האלופות</p>
+<p>🥇 8 כדורי זהב</p>
+</div>
+
+</section>
+
+
+<!-- VIDEOS -->
+
+<section id="videos" style="display:none">
+
+<h2>🎥 סרטוני מסי</h2>
+
+<div class="card">
+
+<h3>⚽ כל השערים של מסי בברצלונה</h3>
+
+<div class="video">
+<iframe
+src="https://www.youtube.com/embed/vkEVH-FVNU4"
+allowfullscreen>
+</iframe>
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>🇦🇷 השערים של מסי במונדיאל 2022</h3>
+
+<div class="video">
+<iframe
+src="https://www.youtube.com/embed/olq9q-HeUc0"
+allowfullscreen>
+</iframe>
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>🏆 שערים ובישולים במונדיאל</h3>
+
+<div class="video">
+<iframe
+src="https://www.youtube.com/embed/7RJk23Wr_xs"
+allowfullscreen>
+</iframe>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- GAMES -->
+
+<section id="games" style="display:none">
+
+<h2>🎮 Messi Games</h2>
+
+<p>בחרי משחק והתחילי לצבור נקודות! ⭐</p>
+
+<div class="grid">
+
+<div class="game" onclick="quizGame()">🧠<br><b>חידון מסי</b></div>
+
+<div class="game" onclick="trueFalseGame()">✅❌<br><b>נכון או לא נכון</b></div>
+
+<div class="game" onclick="penaltyGame()">🥅<br><b>פנדל</b></div>
+
+<div class="game" onclick="reactionGame()">⚡<br><b>תגובה מהירה</b></div>
+
+<div class="game" onclick="cardGame()">🃏<br><b>קלף אקראי</b></div>
+
+<div class="game" onclick="numberGame()">🔢<br><b>נחשי מספר</b></div>
+
+<div class="game" onclick="cupGame()">🏆<br><b>אספי גביע</b></div>
+
+<div class="game" onclick="countryGame()">🌎<br><b>נחשי מדינה</b></div>
+
+<div class="game" onclick="speedGame()">⏱️<br><b>חידון מהירות</b></div>
+
+<div class="game" onclick="whoGame()">🐐<br><b>מי זה?</b></div>
+
+<div class="game" onclick="memoryGame()">🧠<br><b>זיכרון</b></div>
+
+<div class="game" onclick="targetGame()">🎯<br><b>פגעי במטרה</b></div>
+
+<div class="game" onclick="argentinaGame()">🇦🇷<br><b>אתגר ארגנטינה</b></div>
+
+<div class="game" onclick="teamGame()">👕<br><b>נחשי קבוצה</b></div>
+
+<div class="game" onclick="factGame()">💡<br><b>עובדה או שקר</b></div>
+
+<div class="game" onclick="tournamentGame()">🏆<br><b>טורניר</b></div>
+
+<div class="game" onclick="bonusGame()">🎁<br><b>בונוס</b></div>
+
+<div class="game" onclick="streakGame()">🔥<br><b>אתגר רצף</b></div>
+
+<div class="game" onclick="starGame()">⭐<br><b>אתגר הכוכב</b></div>
+
+<div class="game" onclick="finalGame()">👑<br><b>האתגר הגדול</b></div>
+
+</div>
+
+
+<div id="gameBox" class="card">
+
+<h2>🎮 בחרי משחק</h2>
+
+<p>
+המשחק שבחרת יופיע כאן 👇
+</p>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+Messi World ⚽💙🐐
+<br>
+אתר מעריצים לליאו מסי
+</footer>
+
+
+<script>
+
+let score=Number(localStorage.getItem("messiScore")||0);
+
+let best=Number(localStorage.getItem("messiBest")||0);
+
+let audio=null;
+
+
+function updateScore(){
+
+document.getElementById("score").textContent=score;
+
+document.getElementById("best").textContent=best;
+
+document.getElementById("homeScore").textContent=score;
+
+localStorage.setItem("messiScore",score);
+
+localStorage.setItem("messiBest",best);
+
+}
+
+
+function addPoints(points){
+
+score+=points;
+
+if(score>best){
+
+best=score;
+
+}
+
+updateScore();
+
+sound(700,.1);
+
+}
+
+
+function show(id){
+
+document.querySelectorAll("main section").forEach(function(section){
+
+section.style.display="none";
+
+});
+
+document.getElementById(id).style.display="block";
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+function box(content){
+
+document.getElementById("gameBox").innerHTML=content;
+
+document.getElementById("gameBox").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+}
+
+
+/* 🔊 SOUND */
+
+function sound(freq,duration){
+
+try{
+
+if(!audio){
+
+audio=new (window.AudioContext||window.webkitAudioContext)();
+
+}
+
+let oscillator=audio.createOscillator();
+
+let gain=audio.createGain();
+
+oscillator.frequency.value=freq;
+
+gain.gain.value=.06;
+
+oscillator.connect(gain);
+
+gain.connect(audio.destination);
+
+oscillator.start();
+
+setTimeout(function(){
+
+oscillator.stop();
+
+},duration*1000);
+
+}catch(e){}
+
+}
+
+
+function soundTest(){
+
+sound(500,.15);
+
+setTimeout(function(){
+
+sound(700,.15);
+
+},180);
+
+setTimeout(function(){
+
+sound(900,.2);
+
+},360);
+
+}
+
+
+/* 🧠 GAME 1 */
+
+function quizGame(){
+
+let questions=[
+
+["באיזו מדינה נולד מסי?",["🇦🇷 ארגנטינה","🇪🇸 ספרד","🇧🇷 ברזיל"],0],
+
+["כמה כדורי זהב יש למסי?",["5","8","10"],1],
+
+["באיזו רגל מסי משחק בעיקר?",["ימין","שמאל","שתיהן"],1],
+
+["מה המספר המפורסם של מסי?",["7","10","9"],1]
+
+];
+
+let q=questions[Math.floor(Math.random()*questions.length)];
+
+box(`
+
+<h2>🧠 חידון מסי</h2>
+
+<h3>${q[0]}</h3>
+
+${q[1].map(function(answer,index){
+
+return `<button class="answer" onclick="quizAnswer(${index},${q[2]})">${answer}</button>`;
+
+}).join("")}
+
+<div id="result"></div>
+
+`);
+
+}
+
+
+function quizAnswer(answer,correct){
+
+if(answer===correct){
+
+addPoints(10);
+
+document.getElementById("result").textContent="🎉 נכון! +10 נקודות";
+
+}else{
+
+document.getElementById("result").textContent="❌ לא נכון!";
+
+sound(180,.2);
+
+}
+
+}
+
+
+/* ✅❌ GAME 2 */
+
+function trueFalseGame(){
+
+let facts=[
+
+["מסי נולד בארגנטינה",true],
+
+["מסי משחק בעיקר ברגל ימין",false],
+
+["מסי זכה במונדיאל 2022",true],
+
+["מסי נולד בברזיל",false]
+
+];
+
+let f=facts[Math.floor(Math.random()*facts.length)];
+
+box(`
+
+<h2>✅❌ נכון או לא נכון?</h2>
+
+<h3>${f[0]}</h3>
+
+<button class="main" onclick="tfAnswer(true,${f[1]})">נכון ✅</button>
+
+<button class="main" onclick="tfAnswer(false,${f[1]})">לא נכון ❌</button>
+
+<div id="result"></div>
+
+`);
+
+}
+
+
+function tfAnswer(answer,correct){
+
+if(answer===correct){
+
+addPoints(10);
+
+document.getElementById("result").textContent="🎉 צדקת!";
+
+}else{
+
+document.getElementById("result").textContent="😅 טעות!";
+
+}
+
+}
+
+
+/* 🥅 GAME 3 */
+
+function penaltyGame(){
+
+box(`
+
+<h2>🥅 פנדל!</h2>
+
+<p>בחרי לאן לבעוט ⚽</p>
+
+<div class="goal">
+
+<button onclick="kick(0)">↖️</button>
+
+<button onclick="kick(1)">⬆️</button>
+
+<button onclick="kick(2)">↗️</button>
+
+<button onclick="kick(3)">↙️</button>
+
+<button onclick="kick(4)">⬇️</button>
+
+<button onclick="kick(5)">↘️</button>
+
+</div>
+
+<div id="result"></div>
+
+`);
+
+}
+
+
+function kick(choice){
+
+let goalkeeper=Math.floor(Math.random()*6);
+
+if(choice!==goalkeeper){
+
+addPoints(15);
+
+document.getElementById("result").textContent="⚽ GOOOOOL! +15";
+
+sound(900,.25);
+
+}else{
+
+document.getElementById("result").textContent="🧤 השוער עצר!";
+
+sound(150,.25);
+
+}
+
+}
+
+
+/* ⚡ GAME 4 */
+
+function reactionGame(){
+
+box(`
+
+<h2>⚡ תגובה מהירה</h2>
+
+<p>לחצי על הכפתור כשהוא הופך לכדור ⚽</p>
+
+<button id="reactionButton" class="main" onclick="startReaction()">
+התחילי
+</button>
+
+<div id="result"></div>
+
+`);
+
+}
+
+
+function startReaction(){
+
+let button=document.getElementById("reactionButton");
+
+button.disabled=true;
+
+button.textContent="⏳ חכי...";
+
+let wait=1000+Math.random()*2500;
+
+setTimeout(function(){
+
+let start=Date.now();
+
+button.disabled=false;
+
+button.textContent="⚽ עכשיו!";
+
+button.onclick=function(){
+
+let time=Date.now()-start;
+
+if(time<400){
+
+addPoints(25);
+
+document.getElementById("result").textContent=
+"🔥 מטורף! "+time+"ms";
+
+}else{
+
+addPoints(10);
+
+document.getElementById("result").textContent=
+"👍 יפה! "+time+"ms";
+
+}
+
+button.disabled=true;
+
+};
+
+},wait);
+
+}
+
+
+/* 🃏 GAME 5 */
+
+function cardGame(){
+
+let cards=[
+
+"🐐 Messi — Legendary",
+
+"🇦🇷 Messi — Argentina",
+
+"🏆 Messi — World Champion",
+
+"⭐ Messi — 8 Ballon d'Or",
+
+"⚽ Messi — Goal Machine",
+
+"👑 Messi — Captain"
+
+];
+
+let card=cards[Math.floor(Math.random()*cards.length)];
+
+addPoints(5);
+
+box(`
+
+<h2>🃏 קלף אקראי</h2>
+
+<div class="card">
+
+<div class="big">⚽</div>
+
+<h2>${card}</h2>
+
+<p>+5 נקודות ⭐</p>
+
+</div>
+
+`);
+
+}
+
+
+/* 🔢 GAME 6 */
+
+function numberGame(){
+
+box(`
+
+<h2>🔢 נחשי את המספר</h2>
+
+<p>כמה כדורי זהב יש למסי?</p>
+
+<input id="numberInput" type="number" min="1" max="15">
+
+<button class="main" onclick="checkNumber()">בדיקה</button>
+
+<div id="result"></div>
+
+`);
+
+}
+
+
+function checkNumber(){
+
+let answer=Number(document.getElementById("numberInput").value);
+
+if(answer===8){
+
+addPoints(20);
+
+document.getElementById("result").textContent="🏆 נכון! +20";
+
+}else{
+
+document.getElementById("result").textContent="❌ נסי שוב!";
+
+}
+
+}
+
+
+/* 🏆 GAME 7 */
+
+function cupGame(){
+
+let cups=["🏆","🏆","🏆","🏆","🏆"];
+
+let cup=cups[Math.floor(Math.random()*cups.length)];
+
+addPoints(5);
+
+box(`
+
+<h2>🏆 אספי גביע</h2>
+
+<div class="big">${cup}</div>
+
+<h2>זכית ב־5 נקודות! ⭐</h2>
+
+`);
+
+}
+
+
+/* 🌎 GAME 8 */
+
+function countryGame(){
+
+box(`
+
+<h2>🌎 נחשי את המדינה</h2>
+
+<h3>באיזו מדינה נמצאת רוסאריו?</h3>
+
+<button class="answer" onclick="countryAnswer(true)">🇦🇷 ארגנטינה</button>
+
+<button class="answer" onclick="countryAnswer(false)">🇪🇸 ספרד</button>
+
+<button class="answer" onclick="countryAnswer(false)">🇮🇹 איטליה</button>
+
+<div id="result"></div>
+
+`);
+
+}
+
+
+function countryAnswer(correct){
+
+if(correct){
+
+addPoints(10);
+
+document.getElementById("result").textContent="🎉 נכון!";
+
+}else{
+
+document.getElementById("result").textContent="❌ טעות!";
+
+}
+
+}
+
+
+/* ⏱️ GAME 9 */
+
+function speedGame(){
+
+box(`
+
+<h2>⏱️ חידון מהירות</h2>
+
+<h3>מה המספר של מסי?</h3>
+
+<button class="main" onclick="speedAnswer(10)">10</button>
+
+<button class="main" onclick="speedAnswer(7)">7</button>
+
+<button class="main" onclick="speedAnswer(9)">9</button>
+
+<div id="result"></div>
+
+`);
+
+window.speedStart=Date.now();
+
+}
+
+
+function speedAnswer(answer){
+
+let time=(Date.now()-window.speedStart)/1000;
+
+if(answer===10){
+
+let points=Math.max(5,Math.floor(25-time*3));
+
+addPoints(points);
+
+document.getElementById("result").textContent=
+"🔥 נכון! +"+points+" נקודות";
+
+}else{
+
+document.getElementById("result").textContent="❌";
+
+}
+
+}
+
+
+/* 🐐 GAME 10 */
+
+function whoGame(){
+
+box(`
+
+<h2>🐐 מי זה?</h2>
+
+<h3>מי זכה במונדיאל 2022 עם ארגנטינה?</h3>
+
+<button class="answer" onclick="whoAnswer(true)">🐐 ליאו מסי</button>
+
+<button class="answer" onclick="whoAnswer(false)">שחקן אחר</button>
+
+<div id="result"></div>
+
+`);
+
+}
+
+
+function whoAnswer(correct){
+
+if(correct){
+
+addPoints(10);
+
+document.getElementById("result").textContent="🐐 נכון!";
+
+}else{
+
+document.getElementById("result").textContent="❌";
+
+}
+
+}
+
+
+/* 🧠 GAME 11 */
+
+function memoryGame(){
+
+let icons=["⚽","🇦🇷","🏆","🐐","⚽","🇦🇷","🏆","🐐"];
+
+icons.sort(function(){
+return Math.random()-.5;
+});
+
+box(`
+
+<h2>🧠 משחק זיכרון</h2>
+
+<div class="memory" id="memoryBoard"></div>
+
+<div id="result"></div>
+
+`);
+
+let board=document.getElementById("memoryBoard");
+
+let first=null;
+
+let locked=false;
+
+let matches=0;
+
+icons.forEach(function(icon){
+
+let button=document.createElement("button");
+
+button.textContent="❓";
+
+button.onclick=function(){
+
+if(locked || button.textContent!=="❓") return;
+
+button.textContent=icon;
+
+if(!first){
+
+first={button:button,icon:icon};
+
+return;
+
+}
+
+if(first.icon===icon){
+
+matches++;
+
+first=null;
+
+if(matches===4){
+
+addPoints(30);
+
+document.getElementById("result").textContent=
+"🏆 ניצחת! +30 נקודות";
+
+}
+
+}else{
+
+locked=true;
+
+let old=first.button;
+
+setTimeout(function(){
+
+button.textContent="❓";
+
+old.textContent="❓";
+
+first=null;
+
+locked=false;
+
+},700);
+
+}
+
+};
+
+board.appendChild(button);
+
+});
+
+}
+
+
+/* 🎯 GAME 12 */
+
+function targetGame(){
+
+box(`
+
+<h2>🎯 פגעי במטרה!</h2>
+
+<p>לחצי על הכדור ⚽</p>
+
+<button id="targetButton" class="main"
+style="font-size:40px">
+⚽
+</button>
+
+<div id="result"></div>
+
+`);
+
+let target=document.getElementById("targetButton");
+
+target.onclick=function(){
+
+addPoints(15);
+
+document.getElementById("result").textContent=
+"🎯 פגעת! +15";
+
+target.disabled=true;
+
+};
+
+setTimeout(function(){
+
+if(target){
+
+target.style.transform=
+"translateX("+((Math.random()*200)-100)+"px)";
+
+}
+
+},800);
+
+}
+
+
+/* 🇦🇷 GAME 13 */
+
+function argentinaGame(){
+
+box(`
+
+<h2>🇦🇷 אתגר ארגנטינה</h2>
+
+<h3>באיזו שנה ארגנטינה זכתה במונדיאל עם מסי?</h3>
+
+<button class="answer" onclick="argAnswer(false)">2018</button>
+
+<button class="answer" onclick="argAnswer(true)">2022</button>
+
+<button class="answer" onclick="argAnswer(false)">2014</button>
+
+<div id="result"></div>
+
+`);
+
+}
+
+
+function argAnswer(correct){
+
+if(correct){
+
+addPoints(15);
+
+document.getElementById("result").textContent="🏆 נכון!";
+
+}else{
+
+document.getElementById("result").textContent="❌";
+
+}
+
+}
+
+
+/* 👕 GAME 14 */
+
+function teamGame(){
+
+box(`
+
+<h2>👕 נחשי את הקבוצה</h2>
+
+<h3>באיזו קבוצה מסי שיחק במשך שנים רבות?</h3>
+
+<button class="answer" onclick="teamAnswer(true)">🔵🔴 ברצלונה</button>
+
+<button class="answer" onclick="teamAnswer(false)">⚪ ריאל מדריד</button>
+
+<button class="answer" onclick="teamAnswer(false)">🔴 ליברפול</button>
+
+<div id="result"></div>
+
+`);
+
+}
+
+
+function teamAnswer(correct){
+
+if(correct){
+
+addPoints(10);
+
+document.getElementById("result").textContent="🎉 נכון!";
+
+}else{
+
+document.getElementById("result").textContent="❌";
+
+}
+
+}
+
+
+/* 💡 GAME 15 */
+
+function factGame(){
+
+let facts=[
+
+["מסי נולד ברוסאריו",true],
+
+["למסי יש 8 כדורי זהב",true],
+
+["מסי נולד באנגליה",false],
+
+["מסי זכה במונדיאל 2022",true]
+
+];
+
+let f=facts[Math.floor(Math.random()*facts.length)];
+
+box(`
+
+<h2>💡 עובדה או שקר?</h2>
+
+<h3>${f[0]}</h3>
+
+<button class="main" onclick="factAnswer(true,${f[1]})">עובדה</button>
+
+<button class="main" onclick="factAnswer(false,${f[1]})">שקר</button>
+
+<div id="result"></div>
+
+`);
+
+}
+
+
+function factAnswer(answer,correct){
+
+if(answer===correct){
+
+addPoints(10);
+
+document.getElementById("result").textContent="🎉 נכון!";
+
+}else{
+
+document.getElementById("result").textContent="❌";
+
+}
+
+}
+
+
+/* 🏆 GAME 16 */
+
+function tournamentGame(){
+
+box(`
+
+<h2>🏆 טורניר Messi World</h2>
+
+<p>עברִי שלושה שלבים!</p>
+
+<button class="main" onclick="tournamentRound(1)">
+התחילי 🏆
+</button>
+
+<div id="result"></div>
+
+`);
+
+}
+
+
+function tournamentRound(round){
+
+if(round===1){
+
+box(`
+
+<h2>🏆 שלב 1</h2>
+
+<h3>מה המספר של מסי?</h3>
+
+<button class="answer" onclick="tournamentRound(2)">10</button>
+
+<button class="answer" onclick="tournamentLose()">7</button>
+
+<div id="result"></div>
+
+`);
+
+}
+
+else if(round===2){
+
+box(`
+
+<h2>🏆 שלב 2</h2>
+
+<h3>באיזו נבחרת מסי משחק?</h3>
+
+<button class="answer" onclick="tournamentRound(3)">🇦🇷 ארגנטינה</button>
+
+<button class="answer" onclick="tournamentLose()">🇧🇷 ברזיל</button>
+
+<div id="result"></div>
+
+`);
+
+}
+
+else{
+
+addPoints(50);
+
+box(`
+
+<h2>👑 ניצחת בטורניר!</h2>
+
+<div class="big">🏆</div>
+
+<p>+50 נקודות!</p>
+
+`);
+
+}
+
+}
+
+
+function tournamentLose(){
+
+document.getElementById("result").textContent=
+"❌ הודחת! נסי שוב.";
+
+}
+
+
+/* 🎁 GAME 17 */
+
+function bonusGame(){
+
+let prizes=[5,10,15,20,25,30];
+
+let prize=prizes[Math.floor(Math.random()*prizes.length)];
+
+addPoints(prize);
+
+box(`
+
+<h2>🎁 בונוס!</h2>
+
+<div class="big">🎁</div>
+
+<h2>זכית ב־${prize} נקודות!</h2>
+
+`);
+
+}
+
+
+/* 🔥 GAME 18 */
+
+let streak=0;
+
+function streakGame(){
+
+streak=0;
+
+streakQuestion();
+
+}
+
+
+function streakQuestion(){
+
+let questions=[
+
+["מה המספר של מסי?",10],
+
+["באיזו מדינה נולד מסי?",1],
+
+["באיזו רגל הוא משחק בעיקר?",2]
+
+];
+
+let q=questions[Math.floor(Math.random()*questions.length)];
+
+let answers="";
+
+if(q[1]===10){
+
+answers=`
+
+<button class="answer" onclick="streakAnswer(10,10)">10</button>
+
+<button class="answer" onclick="streakAnswer(7,10)">7</button>
+
+`;
+
+}
+
+else if(q[1]===1){
+
+answers=`
+
+<button class="answer" onclick="streakAnswer(1,1)">🇦🇷 ארגנטינה<
